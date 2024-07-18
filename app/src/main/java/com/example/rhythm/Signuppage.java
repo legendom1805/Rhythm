@@ -1,6 +1,9 @@
 package com.example.rhythm;
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -16,6 +19,18 @@ public class Signuppage extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_signuppage);
 
+        TextView text;
+        text = findViewById(R.id.loginintent);
+        text.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent login;
+                login = new Intent(Signuppage.this, loginpage.class);
+                startActivity(login);
 
+
+            }
+        });
     }
+
 }
