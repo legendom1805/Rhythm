@@ -8,4 +8,43 @@
     android:background="@drawable/concert"
     tools:context=".loginpage">
 
+    <ImageView
+        android:id="@+id/imageView3"
+        android:layout_width="143dp"
+        android:layout_height="180dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.459"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.029"
+        app:srcCompat="@drawable/logo2" />
+
+    <EditText
+        android:id="@+id/editTextText2"
+        android:layout_width="246dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="72dp"
+        android:ems="10"
+        android:hint="Email"
+        android:inputType="text"
+        android:paddingLeft="20dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintTop_toBottomOf="@+id/imageView3"
+        tools:layout_editor_absoluteX="63dp" />
+
+    <EditText
+        android:id="@+id/editTextTextPassword"
+        android:layout_width="246dp"
+        android:layout_height="40dp"
+        android:layout_marginTop="48dp"
+        android:ems="10"
+        android:hint="Password"
+        android:inputType="textPassword"
+        android:paddingLeft="2dp"
+        android:textColorHint="@color/white"
+        app:layout_constraintEnd_toEndOf="@+id/editTextText2"
+        app:layout_constraintStart_toStartOf="@+id/editTextText2"
+        app:layout_constraintTop_toBottomOf="@+id/editTextText2" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
