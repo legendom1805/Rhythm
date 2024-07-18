@@ -7,7 +7,6 @@ import android.os.Handler;
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.example.rythm.R;
 
 public class Splash extends AppCompatActivity {
 
