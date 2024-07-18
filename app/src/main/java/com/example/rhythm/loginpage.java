@@ -3,6 +3,7 @@ package com.example.rhythm;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -19,6 +20,9 @@ public class loginpage extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_loginpage);
+
+
+
 
         TextView text;
         text = findViewById(R.id.textView2);
