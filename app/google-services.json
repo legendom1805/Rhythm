@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "348126212612",
+    "project_id": "rhythm-login-register",
+    "storage_bucket": "rhythm-login-register.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:348126212612:android:40046d51983504e14ffb51",
+        "android_client_info": {
+          "package_name": "com.example.rhythm"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDTSKz_mTDnMxdji2MASu8GC1a12VlJ0L4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
