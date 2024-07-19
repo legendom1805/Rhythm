@@ -43,8 +43,8 @@
                 app:layout_constraintTop_toTopOf="parent"
                 app:srcCompat="@drawable/logo2" />
 
-            <EditText
-                android:id="@+id/emaillogin"
+            <com.google.android.material.textfield.TextInputEditText
+                android:id="@id/emaillogin"
                 android:layout_width="253dp"
                 android:layout_height="51dp"
                 android:layout_marginTop="28dp"
@@ -62,7 +62,7 @@
                 app:layout_constraintStart_toStartOf="@+id/textView3"
                 app:layout_constraintTop_toBottomOf="@+id/textView3" />
 
-            <EditText
+            <com.google.android.material.textfield.TextInputEditText
                 android:id="@+id/passwordlogin"
                 android:layout_width="253dp"
                 android:layout_height="51dp"
@@ -84,7 +84,7 @@
             <Button
                 android:id="@+id/loginbtn"
                 android:layout_width="137dp"
-                android:layout_height="36dp"
+                android:layout_height="55dp"
                 android:layout_marginTop="64dp"
                 android:background="@drawable/btnbg"
                 android:fontFamily="sans-serif-black"
@@ -116,9 +116,11 @@
                 android:layout_marginTop="24dp"
                 android:text="Don't have account? Sign Up"
                 android:textColor="#000000"
+                app:layout_constraintBottom_toBottomOf="parent"
                 app:layout_constraintEnd_toEndOf="@+id/loginbtn"
                 app:layout_constraintStart_toStartOf="@+id/loginbtn"
-                app:layout_constraintTop_toBottomOf="@+id/loginbtn" />
+                app:layout_constraintTop_toBottomOf="@+id/loginbtn"
+                app:layout_constraintVertical_bias="0.191" />
 
         </androidx.constraintlayout.widget.ConstraintLayout>
 

@@ -36,9 +36,8 @@ public class Signuppage extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if (currentUser != null) {
-            Intent logint = new Intent(Signuppage.this, MainActivity.class);
+            Intent logint = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(logint);
-            finish();
         }
     }
 
@@ -51,29 +50,21 @@ public class Signuppage extends AppCompatActivity {
         setContentView(R.layout.activity_signuppage);
 
         mAuth = FirebaseAuth.getInstance();
-        TextInputEditText usernamesptext, emailsptext, passwordsptext, repeatpsptext;
+        TextInputEditText emailsptext, passwordsptext;
         Button signbtn;
-        usernamesptext = findViewById(R.id.unamesp);
+
         emailsptext = findViewById(R.id.emailaddresssp);
         passwordsptext = findViewById(R.id.passwordsp);
-        repeatpsptext = findViewById(R.id.passwordsp1);
 
         signbtn = findViewById(R.id.signupbtn);
         signbtn.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
 
-                String username, email, password, repeatpass;
-
-                username = String.valueOf(usernamesptext.getText());
+                String email, password ;
                 email = String.valueOf(emailsptext.getText());
                 password = String.valueOf(passwordsptext.getText());
-                repeatpass = String.valueOf(repeatpsptext.getText());
 
-                if (TextUtils.isEmpty(username)) {
-                    Toast.makeText(Signuppage.this, "Enter Username", Toast.LENGTH_SHORT).show();
-                    return;
-                }
 
                 if (TextUtils.isEmpty(email)) {
                     Toast.makeText(Signuppage.this, "Enter Email", Toast.LENGTH_SHORT).show();
@@ -85,14 +76,13 @@ public class Signuppage extends AppCompatActivity {
                     return;
                 }
 
-                if (TextUtils.isEmpty(repeatpass)) {
-                    Toast.makeText(Signuppage.this, "Repeat Password", Toast.LENGTH_SHORT).show();
+                if(password.length()<6)
+                {
+                    Toast.makeText(Signuppage.this, "Password must have atleast 6 characters", Toast.LENGTH_SHORT).show();
                     return;
                 }
 
-                if (repeatpass != password) {
-                    Toast.makeText(Signuppage.this, "Re-entered Password doesn't match", Toast.LENGTH_SHORT).show();
-                }
+
 
                 mAuth.createUserWithEmailAndPassword(email, password)
                         .addOnCompleteListener(new OnCompleteListener<AuthResult>() {
@@ -100,12 +90,13 @@ public class Signuppage extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     Toast.makeText(Signuppage.this, "Account Created Successfully", Toast.LENGTH_SHORT).show();
-                                    Intent logint = new Intent(Signuppage.this, loginpage.class);
+                                    Intent logint = new Intent(getApplicationContext(), loginpage.class);
                                     startActivity(logint);
                                     finish();
-                                } else {
+                                }
+                                else {
                                     // If sign in fails, display a message to the user.
-                                    Toast.makeText(Signuppage.this, "Authentication failed.",
+                                    Toast.makeText(Signuppage.this, "Error Occurred!" + task.getException().getMessage(),
                                             Toast.LENGTH_SHORT).show();
                                 }
                             }
@@ -121,7 +112,6 @@ public class Signuppage extends AppCompatActivity {
                 Intent login;
                 login = new Intent(Signuppage.this, loginpage.class);
                 startActivity(login);
-                finish();
             }
         });
     }

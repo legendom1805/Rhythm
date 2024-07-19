@@ -12,9 +12,6 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.graphics.Insets;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 
 import com.google.android.gms.tasks.OnCompleteListener;
 import com.google.android.gms.tasks.Task;
@@ -33,9 +30,9 @@ public class loginpage extends AppCompatActivity {
         // Check if user is signed in (non-null) and update UI accordingly.
         FirebaseUser currentUser = mAuth.getCurrentUser();
         if(currentUser != null){
-            Intent logint = new Intent(loginpage.this, MainActivity.class);
+            Intent logint = new Intent(getApplicationContext(), MainActivity.class);
             startActivity(logint);
-            finish();
+
         }
     }
     @SuppressLint("WrongViewCast")
@@ -77,10 +74,10 @@ public class loginpage extends AppCompatActivity {
                             public void onComplete(@NonNull Task<AuthResult> task) {
                                 if (task.isSuccessful()) {
                                     // Sign in success, update UI with the signed-in user's information
-                                    Toast.makeText(loginpage.this, "Login Succesfull", Toast.LENGTH_SHORT).show();
-                                    Intent logint = new Intent(loginpage.this, MainActivity.class);
+                                    Toast.makeText(loginpage.this, "Login Succesful", Toast.LENGTH_SHORT).show();
+                                    Intent logint = new Intent(getApplicationContext(), MainActivity.class);
                                     startActivity(logint);
-                                    finish();
+
 
                                 } else {
                                     // If sign in fails, display a message to the user.
@@ -101,7 +98,6 @@ public class loginpage extends AppCompatActivity {
                 Intent signup;
                 signup = new Intent(loginpage.this, Signuppage.class);
                 startActivity(signup);
-                finish();
 
             }
         });
