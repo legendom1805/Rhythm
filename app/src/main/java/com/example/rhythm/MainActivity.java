@@ -8,15 +8,13 @@ import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
+import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-import com.google.firebase.Firebase;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
-
-import java.io.FileReader;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -26,6 +24,12 @@ public class MainActivity extends AppCompatActivity {
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
 
+        //Setting up toolbar as actionbar
+        Toolbar toolbar;
+        toolbar = findViewById(R.id.toolbar);
+        setSupportActionBar(toolbar);
+
+        //Firebase Authentication Logout
         FirebaseAuth auth;
         TextView email;
         Button logout;
@@ -58,10 +62,6 @@ public class MainActivity extends AppCompatActivity {
                 finish();
             }
         });
-
-
-
-
 
 
     }
