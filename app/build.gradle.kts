@@ -1,7 +1,7 @@
+
 plugins {
     alias(libs.plugins.android.application)
-
-
+    alias(libs.plugins.google.gms.google.services)
 }
 
 android {
@@ -46,6 +46,7 @@ dependencies {
     implementation(libs.lifecycle.viewmodel.ktx)
     implementation(libs.navigation.fragment)
     implementation(libs.navigation.ui)
+    implementation(libs.firebase.auth)
     testImplementation(libs.junit)
     androidTestImplementation(libs.ext.junit)
     androidTestImplementation(libs.espresso.core)
