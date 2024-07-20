@@ -102,7 +102,8 @@ public class MainActivity extends AppCompatActivity {
 
         //Firebase Authentication Logout
         FirebaseAuth auth;
-        TextView email;
+        TextView email,email2;
+
         Button logout;
         FirebaseUser user;
 
@@ -120,6 +121,8 @@ public class MainActivity extends AppCompatActivity {
         else {
 
             email.setText(user.getEmail());
+
+
 
         }
 

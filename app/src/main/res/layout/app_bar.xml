@@ -16,34 +16,25 @@
             android:layout_height="60dp"
             android:background="#2B2D30">
 
-            <androidx.constraintlayout.widget.ConstraintLayout
+            <LinearLayout
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content">
+                android:layout_height="wrap_content"
+               >
 
                 <ImageView
-                    android:id="@+id/imageView4"
-                    android:layout_width="56dp"
-                    android:layout_height="54dp"
-                    android:layout_marginStart="16dp"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintStart_toStartOf="parent"
-                    app:layout_constraintTop_toTopOf="parent"
-                    app:layout_constraintVertical_bias="0.0"
-                    app:srcCompat="@drawable/logo2" />
+                    android:layout_width="52dp"
+                    android:layout_height="45dp"
+                    android:src="@drawable/logo2" />
 
                 <TextView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_gravity="center_vertical"
                     android:id="@+id/emailview"
-                    android:layout_width="154dp"
-                    android:layout_height="32dp"
-                    android:layout_marginEnd="148dp"
-                    android:text="TextView"
-                    android:textColor="@color/yellow"
-                    app:layout_constraintBottom_toBottomOf="parent"
-                    app:layout_constraintEnd_toEndOf="parent"
-                    app:layout_constraintHorizontal_bias="1.0"
-                    app:layout_constraintStart_toEndOf="@+id/imageView4"
-                    app:layout_constraintTop_toTopOf="parent" />
-            </androidx.constraintlayout.widget.ConstraintLayout>
+                    android:text="Textview"/>
+
+            </LinearLayout>
+
         </androidx.appcompat.widget.Toolbar>
     </com.google.android.material.appbar.AppBarLayout>
 
