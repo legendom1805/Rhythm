@@ -44,16 +44,22 @@ public class MainActivity extends AppCompatActivity {
         drawerLayout.addDrawerListener(toggle);
         toggle.syncState();
 
+        account_fragment accountFragment = new account_fragment();
+
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
 
                 if(item.getItemId()==R.id.account)
                 {
-                    
+                    getSupportFragmentManager().beginTransaction().replace(R.id.mainfragment,accountFragment).commit();
+                    return true;
                 }
                 else if (item.getItemId()==R.id.logout) {
                     FirebaseAuth.getInstance().signOut();
+                    Intent logint = new Intent(MainActivity.this, loginpage.class);
+                    startActivity(logint);
+                    finish();
                 }
 
 
@@ -100,11 +106,8 @@ public class MainActivity extends AppCompatActivity {
 
 
 
-        //Firebase Authentication Logout
         FirebaseAuth auth;
-        TextView email,email2;
-
-        Button logout;
+        TextView email;
         FirebaseUser user;
 
         auth = FirebaseAuth.getInstance();
