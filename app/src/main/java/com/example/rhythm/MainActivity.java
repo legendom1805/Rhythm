@@ -1,10 +1,12 @@
 package com.example.rhythm;
 
+import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
@@ -13,6 +15,7 @@ import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.core.graphics.Insets;
+import androidx.core.view.GravityCompat;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
@@ -25,27 +28,41 @@ import com.google.firebase.auth.FirebaseUser;
 
 public class MainActivity extends AppCompatActivity {
 
+    @SuppressLint("WrongViewCast")
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
         //Navigation Drawer
         DrawerLayout drawerLayout;
         NavigationView navigationView;
         Toolbar toolbar;
+        ImageButton drawernavtoggle;
+        ImageButton acctoggle;
 
         drawerLayout = findViewById(R.id.drawerlayout);
         navigationView = findViewById(R.id.navigationView);
         toolbar = findViewById(R.id.toolbar);
+        drawernavtoggle = findViewById(R.id.drawernavtoggle);
+        acctoggle = findViewById(R.id.accounttogglle);
         setSupportActionBar(toolbar);
-        ActionBarDrawerToggle toggle = new ActionBarDrawerToggle(
-                this,drawerLayout,toolbar,R.string.OpenDrawer,R.string.CloseDrawer);
-        drawerLayout.addDrawerListener(toggle);
-        toggle.syncState();
-
         account_fragment accountFragment = new account_fragment();
 
+        acctoggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                getSupportFragmentManager().beginTransaction().replace(R.id.mainfragment,accountFragment).commit();
+            }
+        });
+
+        drawernavtoggle.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                drawerLayout.open();
+            }
+        });
         navigationView.setNavigationItemSelectedListener(new NavigationView.OnNavigationItemSelectedListener() {
             @Override
             public boolean onNavigationItemSelected(MenuItem item) {
@@ -53,7 +70,6 @@ public class MainActivity extends AppCompatActivity {
                 if(item.getItemId()==R.id.account)
                 {
                     getSupportFragmentManager().beginTransaction().replace(R.id.mainfragment,accountFragment).commit();
-                    return true;
                 }
                 else if (item.getItemId()==R.id.logout) {
                     FirebaseAuth.getInstance().signOut();
@@ -62,10 +78,13 @@ public class MainActivity extends AppCompatActivity {
                     finish();
                 }
 
+                drawerLayout.closeDrawer(GravityCompat.START);
+
 
                 return true;
             }
         });
+
 
 
 
@@ -106,12 +125,14 @@ public class MainActivity extends AppCompatActivity {
 
 
 
+
+
+
+
         FirebaseAuth auth;
-        TextView email;
         FirebaseUser user;
 
         auth = FirebaseAuth.getInstance();
-        email = findViewById(R.id.emailview);
         user = auth.getCurrentUser();
 
         if(user==null)
@@ -123,7 +144,7 @@ public class MainActivity extends AppCompatActivity {
 
         else {
 
-            email.setText(user.getEmail());
+            //email.setText(user.getEmail());
 
 
 
@@ -136,4 +157,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     }
+
 }
+
