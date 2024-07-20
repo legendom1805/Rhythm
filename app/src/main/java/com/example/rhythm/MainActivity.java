@@ -3,14 +3,17 @@ package com.example.rhythm;
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
+import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
@@ -25,8 +28,19 @@ import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;
 import com.google.firebase.auth.FirebaseAuth;
 import com.google.firebase.auth.FirebaseUser;
+import com.google.firebase.firestore.DocumentReference;
+import com.google.firebase.firestore.DocumentSnapshot;
+import com.google.firebase.firestore.EventListener;
+import com.google.firebase.firestore.FirebaseFirestore;
+import com.google.firebase.firestore.FirebaseFirestoreException;
 
 public class MainActivity extends AppCompatActivity {
+
+    FirebaseAuth auth;
+    FirebaseUser user;
+    FirebaseFirestore fstore;
+    TextView emailtext,usernametext;
+    String userId;
 
     @SuppressLint("WrongViewCast")
     @Override
@@ -34,6 +48,22 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         EdgeToEdge.enable(this);
         setContentView(R.layout.activity_main);
+
+        auth = FirebaseAuth.getInstance();
+
+        fstore = FirebaseFirestore.getInstance();
+        usernametext = findViewById(R.id.usernameview);
+        emailtext = findViewById(R.id.emailview2);
+
+        userId = auth.getCurrentUser().getUid();
+        DocumentReference documentReference = fstore.collection("user").document(userId);
+        documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
+            @Override
+            public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
+                emailtext.setText(documentSnapshot.getString("Email"));
+                usernametext.setText(documentSnapshot.getString("Username"));
+            }
+        });
 
         //Navigation Drawer
         DrawerLayout drawerLayout;
@@ -123,16 +153,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
-
-
-
-
-
-        FirebaseAuth auth;
-        FirebaseUser user;
-
-        auth = FirebaseAuth.getInstance();
         user = auth.getCurrentUser();
 
         if(user==null)
@@ -144,7 +164,7 @@ public class MainActivity extends AppCompatActivity {
 
         else {
 
-            //email.setText(user.getEmail());
+            Toast.makeText(MainActivity.this,"Welcome to Rhythm!",Toast.LENGTH_SHORT).show();
 
 
 
