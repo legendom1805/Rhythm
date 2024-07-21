@@ -52,9 +52,13 @@ public class MainActivity extends AppCompatActivity {
         auth = FirebaseAuth.getInstance();
 
         fstore = FirebaseFirestore.getInstance();
-        usernametext = findViewById(R.id.usernameview);
-        emailtext = findViewById(R.id.emailview2);
 
+        NavigationView navigationView = (NavigationView) findViewById(R.id.navigationView);
+
+        View header=navigationView.getHeaderView(0);
+
+        emailtext = (TextView)header.findViewById(R.id.emailview2);
+        usernametext = (TextView)header.findViewById(R.id.usernameview);
         userId = auth.getCurrentUser().getUid();
         DocumentReference documentReference = fstore.collection("user").document(userId);
         documentReference.addSnapshotListener(this, new EventListener<DocumentSnapshot>() {
@@ -62,12 +66,13 @@ public class MainActivity extends AppCompatActivity {
             public void onEvent(@Nullable DocumentSnapshot documentSnapshot, @Nullable FirebaseFirestoreException e) {
                 emailtext.setText(documentSnapshot.getString("Email"));
                 usernametext.setText(documentSnapshot.getString("Username"));
+
             }
         });
 
         //Navigation Drawer
         DrawerLayout drawerLayout;
-        NavigationView navigationView;
+        //NavigationView navigationView;
         Toolbar toolbar;
         ImageButton drawernavtoggle;
         ImageButton acctoggle;
@@ -124,6 +129,7 @@ public class MainActivity extends AppCompatActivity {
         home_fragment homeFragment = new home_fragment();
         search_fragment searchFragment = new search_fragment();
         mylibrary_fragment mylibraryFragment = new mylibrary_fragment();
+
 
         bottomNavigationView = findViewById(R.id.bottomNavigationView);
         getSupportFragmentManager().beginTransaction().replace(R.id.mainfragment,homeFragment).commit();
