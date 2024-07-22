@@ -1,8 +1,19 @@
-package com.example.rhythm.recycler_view_categories;
+package com.example.rhythm.mainactivity.mainfragments.search.recycler_view_categories;
+
+import java.util.List;
 
 public class model {
 
     String coverURL;
+    List<String> songs;
+
+    public List<String> getSongs() {
+        return songs;
+    }
+
+    public void setSongs(List<String> songs) {
+        this.songs = songs;
+    }
 
     public  model() {}
 

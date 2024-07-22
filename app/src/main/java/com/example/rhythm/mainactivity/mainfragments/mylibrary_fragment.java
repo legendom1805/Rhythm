@@ -1,4 +1,4 @@
-package com.example.rhythm;
+package com.example.rhythm.mainactivity.mainfragments;
 
 import android.os.Bundle;
 
@@ -7,6 +7,8 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+
+import com.example.rhythm.R;
 
 public class mylibrary_fragment extends Fragment {
 

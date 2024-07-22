@@ -1,12 +1,10 @@
-package com.example.rhythm;
+package com.example.rhythm.mainactivity;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
 import android.os.Bundle;
-import android.provider.ContactsContract;
 import android.view.MenuItem;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -14,15 +12,17 @@ import android.widget.Toast;
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.core.graphics.Insets;
 import androidx.core.view.GravityCompat;
-import androidx.core.view.ViewCompat;
-import androidx.core.view.WindowInsetsCompat;
 import androidx.drawerlayout.widget.DrawerLayout;
 
+import com.example.rhythm.R;
+import com.example.rhythm.loginpage;
+import com.example.rhythm.mainactivity.mainfragments.account_fragment;
+import com.example.rhythm.mainactivity.mainfragments.home_fragment;
+import com.example.rhythm.mainactivity.mainfragments.mylibrary_fragment;
+import com.example.rhythm.mainactivity.mainfragments.search.recycler_view_categories.search_fragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import com.google.android.material.navigation.NavigationBarView;
 import com.google.android.material.navigation.NavigationView;

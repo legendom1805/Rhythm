@@ -1,11 +1,9 @@
-package com.example.rhythm.recycler_view_categories;
+package com.example.rhythm.mainactivity.mainfragments.search.recycler_view_categories;
 
-import android.annotation.SuppressLint;
 import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
 import android.widget.ImageView;
 
 import androidx.annotation.NonNull;
@@ -13,9 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.example.rhythm.R;
-import com.google.firebase.firestore.auth.User;
 
-import java.lang.reflect.Array;
 import java.util.ArrayList;
 
 public class categories_adaptor extends RecyclerView.Adapter<categories_adaptor.ViewHolder> {
