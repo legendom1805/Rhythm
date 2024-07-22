@@ -37,38 +37,6 @@ public class   home_fragment extends Fragment {
                              Bundle savedInstanceState) {
 
         View view = inflater.inflate(R.layout.fragment_home_fragment, container, false);
-        RecyclerView recyclerView = view.findViewById(R.id.recyclerviewcontact);
-        recyclerView.setLayoutManager(new GridLayoutManager(requireContext(),2));
-        db = FirebaseFirestore.getInstance();
-        categoriesarr = new ArrayList<model>();
-        categoriesAdaptor = new categories_adaptor(getContext(),categoriesarr );
-        recyclerView.setAdapter(categoriesAdaptor);
-        EventChangeListner();
         return view;
-    }
-
-    private void EventChangeListner() {
-        db.collection("category")
-                .addSnapshotListener(new EventListener<QuerySnapshot>() {
-                    @Override
-                    public void onEvent(@Nullable QuerySnapshot queryDocumentSnapshots, @Nullable FirebaseFirestoreException error) {
-
-                        if(error !=null){
-
-                            Log.e("Firestore error",error.getMessage());
-                            return;
-
-                        }
-
-                        for(DocumentChange dc : queryDocumentSnapshots.getDocumentChanges()){
-                            if(dc.getType() == DocumentChange.Type.ADDED){
-                                categoriesarr.add(dc.getDocument().toObject(model.class));
-                            }
-
-                            categoriesAdaptor.notifyDataSetChanged();
-                        }
-
-                    }
-                });
     }
 }
