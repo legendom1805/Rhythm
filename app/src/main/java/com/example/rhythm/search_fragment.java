@@ -5,6 +5,7 @@ import android.os.Bundle;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
@@ -35,7 +36,7 @@ public class search_fragment extends Fragment {
 
         View view = inflater.inflate(R.layout.fragment_search_fragment, container, false);
         RecyclerView recyclerView = view.findViewById(R.id.recyclerviewcontact);
-        recyclerView.setLayoutManager(new GridLayoutManager(requireContext(),2));
+        recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         db = FirebaseFirestore.getInstance();
         categoriesarr = new ArrayList<model>();
         categoriesAdaptor = new categories_adaptor(getContext(),categoriesarr );
