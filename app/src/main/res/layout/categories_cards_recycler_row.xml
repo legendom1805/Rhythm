@@ -13,6 +13,7 @@
         android:layout_width="193dp"
         android:layout_height="98dp"
         android:layout_weight="1"
+        android:background="#00FFFFFF"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

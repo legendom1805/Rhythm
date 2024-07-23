@@ -2,6 +2,7 @@ package com.example.rhythm.mainactivity.mainfragments.search.recycler_view_categ
 
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -9,6 +10,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.util.Log;
 import android.view.LayoutInflater;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 
@@ -37,9 +39,10 @@ public class search_fragment extends Fragment {
         recyclerView.setLayoutManager(new GridLayoutManager(getContext(),2));
         db = FirebaseFirestore.getInstance();
         categoriesarr = new ArrayList<model>();
-        categoriesAdaptor = new categories_adaptor(getContext(),categoriesarr );
+        categoriesAdaptor = new categories_adaptor(getContext(),categoriesarr);
         recyclerView.setAdapter(categoriesAdaptor);
         EventChangeListner();
+
         return view;
     }
 

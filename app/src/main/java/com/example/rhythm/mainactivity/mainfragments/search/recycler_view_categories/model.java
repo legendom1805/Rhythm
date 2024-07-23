@@ -5,15 +5,6 @@ import java.util.List;
 public class model {
 
     String coverURL;
-    List<String> songs;
-
-    public List<String> getSongs() {
-        return songs;
-    }
-
-    public void setSongs(List<String> songs) {
-        this.songs = songs;
-    }
 
     public  model() {}
 
